@@ -15,3 +15,11 @@
 *.exe
 *.out
 *.app
+
+# Java
+*.class
+
+# Eclipse
+bin/
+.settings/
+.project
