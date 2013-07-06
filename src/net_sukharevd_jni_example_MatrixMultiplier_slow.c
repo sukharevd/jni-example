@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <jni.h>
-#include "com_example_Calculator.h"
+#include "net_sukharevd_jni_example_MatrixMultiplier.h"
 
-JNIEXPORT jobjectArray JNICALL Java_com_example_Calculator_multiply
+JNIEXPORT jobjectArray JNICALL Java_net_sukharevd_jni_example_MatrixMultiplier_multiply
   (JNIEnv* env, jobject obj, jobjectArray a, jobjectArray b) {
 
      jint size = (*env)->GetArrayLength(env, a);

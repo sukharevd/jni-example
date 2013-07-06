@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <jni.h>
-#include "com_example_Calculator.h"
+#include "net_sukharevd_jni_example_MatrixMultiplier.h"
 
-JNIEXPORT jobjectArray JNICALL Java_com_example_Calculator_multiply
+JNIEXPORT jobjectArray JNICALL Java_net_sukharevd_jni_example_MatrixMultiplier_multiply
   (JNIEnv* env, jobject obj, jobjectArray a, jobjectArray b) {
 
      jint size = (*env)->GetArrayLength(env, a);
@@ -20,7 +20,7 @@ JNIEXPORT jobjectArray JNICALL Java_com_example_Calculator_multiply
      // CREATE RESULT ARRAY
      jclass intArrCls = (*env)->FindClass(env, "[I");              // find int[] class
      if (intArrCls == NULL)
-         return NULL; /* exception thrown */                       // return NULL if wasn't found
+         return NULL; /* exception thrown */
      jobjectArray result =                                         // create array of int[]
                            (*env)->NewObjectArray(env, size, intArrCls, NULL);
      if (result == NULL)
@@ -49,9 +49,9 @@ JNIEXPORT jobjectArray JNICALL Java_com_example_Calculator_multiply
          jintArray res_row = (*env)->NewIntArray(env, size);
          if (res_row == NULL)
              return NULL; /* out of memory error thrown */
-         (*env)->SetIntArrayRegion(env, res_row, 0, size, buf_res_row); // firstly copy to new array object
-         (*env)->SetObjectArrayElement(env, result, i, res_row);    // and then to matrix
-         (*env)->DeleteLocalRef(env, res_row);
+         (*env)->SetIntArrayRegion(env, res_row, 0, size, buf_res_row); // firstly copy to new
+         (*env)->SetObjectArrayElement(env, result, i, res_row);        // array object, and
+         (*env)->DeleteLocalRef(env, res_row);                          // then to matrix.
      }
      
      // CLEAN UP
